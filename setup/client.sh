@@ -8,5 +8,6 @@ sudo apt-get update && sudo apt-get install ceph-common -y
 sudo mkdir /etc/ceph
 sudo cp /vagrant/setup/ceph.conf /etc/ceph/ceph.conf
 sudo cp /vagrant/setup/keyring /etc/ceph/keyring
-echo "192.168.251.100 ceph" >> /etc/hosts
-echo "rbd" >> /etc/modules
+grep -q -F '192.168.251.100 ceph' /etc/hosts || echo '192.168.251.100 ceph' >> /etc/hosts
+grep -q -F 'rbd' /etc/hosts || echo 'rbd' >> /etc/modules
+
